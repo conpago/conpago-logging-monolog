@@ -1,5 +1,5 @@
 {
-	"name": "saigon/conpago/logging/monolog",
+	"name": "saigon/conpago-logging-monolog",
 	"description": "Conpago.Logging.Monolog",
 	"version": "0.0.1-alpha",
 	"type": "library",
