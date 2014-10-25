@@ -18,6 +18,7 @@
 		protected function setUp()
 		{
 			$this->loggerConfig = $this->getMock('Saigon\Conpago\Logging\Contract\ILoggerConfig');
+			$this->loggerConfig->expects($this->any())->method('getLogFilePath')->willReturn('');
 			$this->loggerFactory = new LoggerFactory($this->loggerConfig);
 		}
 
@@ -26,4 +27,3 @@
 			$this->assertInstanceOf('Monolog\Logger', $this->loggerFactory->createLogger());
 		}
 	}
- 
