@@ -18,10 +18,15 @@
 		{
 			"type": "hg",
 			"url": "http://scm.golek.biz/scm/hg/Conpago"
+		},
+		{
+			"type": "hg",
+			"url": "http://scm.golek.biz/scm/hg/Conpago.Utils"
 		}
 	],
 	"require": {
 		"saigon/conpago-di": "dev-master",
+		"saigon/conpago-utils": "dev-master",
 		"saigon/conpago": "dev-master",
 		"monolog/monolog": "*"
 	},
