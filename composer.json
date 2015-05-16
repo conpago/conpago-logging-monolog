@@ -1,8 +1,8 @@
 {
 	"name": "saigon/conpago-logging-monolog",
-	"description": "Conpago.Logging.Monolog",
-	"version": "0.0.1-alpha",
+	"description": "Monolog logging adapter for Conpago framework",
 	"type": "library",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Bartosz Gołek",
@@ -10,29 +10,10 @@
 			"homepage": "http://bartosz.golek.biz"
 		}
 	],
-	"repositories": [
-		{
-			"type": "hg",
-			"url": "http://scm.golek.biz/scm/hg/Conpago.DI"
-		},
-		{
-			"type": "hg",
-			"url": "http://scm.golek.biz/scm/hg/Conpago"
-		},
-		{
-			"type": "hg",
-			"url": "http://scm.golek.biz/scm/hg/Conpago.Contract"
-		},
-		{
-			"type": "hg",
-			"url": "http://scm.golek.biz/scm/hg/Conpago.Utils"
-		}
-	],
 	"require": {
-		"saigon/conpago-di": "dev-master",
-		"saigon/conpago-utils": "dev-master",
-		"saigon/conpago-contract": "dev-master",
-		"saigon/conpago": "dev-master",
+		"saigon/conpago-di": "dev-default",
+		"saigon/conpago-utils": "dev-default",
+		"saigon/conpago-contract": "dev-default",
 		"monolog/monolog": "*"
 	},
 	"require-dev": {

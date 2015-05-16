@@ -10,7 +10,7 @@
 
 
 	use Saigon\Conpago\DI\IContainerBuilder;
-	use Saigon\Conpago\IModule;
+	use Saigon\Conpago\DI\IModule;
 
 	class MonologLoggerModule implements IModule
 	{
