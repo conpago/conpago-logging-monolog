@@ -6,11 +6,11 @@
 	 * Time: 08:02
 	 */
 
-	namespace Saigon\Conpago\Logging\Monolog;
+	namespace Conpago\Logging\Monolog;
 
 
-	use Saigon\Conpago\DI\IContainerBuilder;
-	use Saigon\Conpago\DI\IModule;
+	use Conpago\DI\IContainerBuilder;
+	use Conpago\DI\IModule;
 
 	class MonologLoggerModule implements IModule
 	{
@@ -18,16 +18,16 @@
 		public function build(IContainerBuilder $builder)
 		{
 			$builder
-				->registerType('Saigon\Conpago\Logging\Monolog\LoggerFactory');
+				->registerType('Conpago\Logging\Monolog\LoggerFactory');
 
 			$builder
 				->register(function (IContainer $c)
 					{
 						/** @var LoggerFactory $loggerFactory */
-						$loggerFactory = $c->resolve('Saigon\Conpago\Logging\Monolog\LoggerFactory');
+						$loggerFactory = $c->resolve('Conpago\Logging\Monolog\LoggerFactory');
 
 						return $loggerFactory->createLogger();
 					})
-				->asA('Saigon\Conpago\Logging\Contract\ILogger');
+				->asA('Conpago\Logging\Contract\ILogger');
 		}
 	}

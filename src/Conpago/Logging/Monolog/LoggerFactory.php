@@ -6,12 +6,12 @@
 	 * Time: 07:42
 	 */
 
-	namespace Saigon\Conpago\Logging\Monolog;
+	namespace Conpago\Logging\Monolog;
 
 	use Monolog\Logger as MonologLogger;
 	use Monolog\Handler\StreamHandler;
 	use Psr\Log\LoggerInterface;
-	use Saigon\Conpago\Logging\Contract\ILoggerConfig;
+	use Conpago\Logging\Contract\ILoggerConfig;
 
 	class LoggerFactory
 	{

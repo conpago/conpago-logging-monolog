@@ -6,7 +6,7 @@
 	 * Time: 08:31
 	 */
 
-	namespace Saigon\Conpago\Logging\Monolog;
+	namespace Conpago\Logging\Monolog;
 
 
 	class LoggerFactoryTest extends \PHPUnit_Framework_TestCase
@@ -17,7 +17,7 @@
 
 		protected function setUp()
 		{
-			$this->loggerConfig = $this->getMock('Saigon\Conpago\Logging\Contract\ILoggerConfig');
+			$this->loggerConfig = $this->getMock('Conpago\Logging\Contract\ILoggerConfig');
 			$this->loggerConfig->expects($this->any())->method('getLogFilePath')->willReturn('');
 			$this->loggerFactory = new LoggerFactory($this->loggerConfig);
 		}

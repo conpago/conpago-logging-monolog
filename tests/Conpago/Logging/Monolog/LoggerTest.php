@@ -6,7 +6,7 @@
 	 * Time: 08:08
 	 */
 
-	namespace Saigon\Conpago\Logging\Monolog;
+	namespace Conpago\Logging\Monolog;
 
 
 	use PHPUnit_Framework_MockObject_MockObject;

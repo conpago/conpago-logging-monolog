@@ -6,10 +6,10 @@
 	 * Time: 19:19
 	 */
 
-	namespace Saigon\Conpago\Logging\Monolog;
+	namespace Conpago\Logging\Monolog;
 
 	use Psr\Log\LoggerInterface;
-	use Saigon\Conpago\Logging\Contract\ILogger;
+	use Conpago\Logging\Contract\ILogger;
 
 	class Logger implements ILogger
 	{

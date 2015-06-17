@@ -1,5 +1,5 @@
 {
-	"name": "saigon/conpago-logging-monolog",
+	"name": "conpago/conpago-logging-monolog",
 	"description": "Monolog logging adapter for Conpago framework",
 	"type": "library",
 	"license": "MIT",
@@ -11,9 +11,9 @@
 		}
 	],
 	"require": {
-		"saigon/conpago-di": "dev-default",
-		"saigon/conpago-utils": "dev-default",
-		"saigon/conpago-contract": "dev-default",
+		"conpago/conpago-di": "dev-default",
+		"conpago/conpago-utils": "dev-default",
+		"conpago/conpago-contract": "dev-default",
 		"monolog/monolog": "*"
 	},
 	"require-dev": {
@@ -25,7 +25,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Saigon\\Conpago\\Logging\\Monolog\\": "src/"
+			"Conpago\\Logging\\Monolog\\": "src/"
 		}
 	}
 }
