@@ -31,11 +31,12 @@
 		function createLogger()
 		{
 			$log = new MonologLogger('application');
-			$log->pushHandler(
-				new StreamHandler(
-					$this->loggerConfig->getLogFilePath(), $this->loggerConfig->getLogLevel()
-				)
+			$handler = new StreamHandler(
+					$this->loggerConfig->getLogFilePath(),
+					$this->loggerConfig->getLogLevel()
 			);
+			$handler->setFormatter(new ExceptionLineFormatter());
+			$log->pushHandler($handler);
 
 			return $log;
 		}
