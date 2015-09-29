@@ -8,9 +8,9 @@
 
 	namespace Conpago\Logging\Monolog;
 
+	use Conpago\Logging\Contract\ILogger;
 	use Monolog\Logger as MonologLogger;
 	use Monolog\Handler\StreamHandler;
-	use Psr\Log\LoggerInterface;
 	use Conpago\Logging\Contract\ILoggerConfig;
 
 	class LoggerFactory
@@ -26,7 +26,7 @@
 		}
 
 		/**
-		 * @return LoggerInterface
+		 * @return ILogger
 		 */
 		function createLogger()
 		{
@@ -38,6 +38,6 @@
 			$handler->setFormatter(new ExceptionLineFormatter());
 			$log->pushHandler($handler);
 
-			return $log;
+			return new Logger($log);
 		}
 	}

@@ -24,6 +24,6 @@
 
 		function testCreateLogger()
 		{
-			$this->assertInstanceOf('Monolog\Logger', $this->loggerFactory->createLogger());
+			$this->assertInstanceOf('Conpago\Logging\Contract\ILogger', $this->loggerFactory->createLogger());
 		}
 	}
