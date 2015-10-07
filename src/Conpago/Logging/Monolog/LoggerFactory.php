@@ -9,6 +9,7 @@
 	namespace Conpago\Logging\Monolog;
 
 	use Conpago\Logging\Contract\ILogger;
+	use Conpago\Logging\Contract\ILoggerConfigProvider;
 	use Monolog\Logger as MonologLogger;
 	use Monolog\Handler\StreamHandler;
 	use Conpago\Logging\Contract\ILoggerConfig;
@@ -16,28 +17,28 @@
 	class LoggerFactory
 	{
 		/**
-		 * @var ILoggerConfig
+		 * @var ILoggerConfigProvider
 		 */
 		private $loggerConfig;
 
-		function __construct(ILoggerConfig $loggerConfig)
+		function __construct(ILoggerConfigProvider $loggerConfigProvider)
 		{
-			$this->loggerConfig = $loggerConfig;
+			$this->loggerConfigProvider = $loggerConfigProvider;
 		}
 
 		/**
 		 * @return ILogger
 		 */
-		function createLogger()
-		{
+		function createLogger() {
 			$log = new MonologLogger('application');
-			$handler = new StreamHandler(
-					$this->loggerConfig->getLogFilePath(),
-					$this->loggerConfig->getLogLevel()
-			);
-			$handler->setFormatter(new ExceptionLineFormatter());
-			$log->pushHandler($handler);
-
+			foreach ($this->loggerConfigProvider->getConfigs() as $loggerConfig) {
+				$handler = new StreamHandler(
+						$loggerConfig->getLogFilePath(),
+						$loggerConfig->getLogLevel()
+				);
+				$handler->setFormatter( new ExceptionLineFormatter() );
+				$log->pushHandler( $handler );
+			}
 			return new Logger($log);
 		}
 	}

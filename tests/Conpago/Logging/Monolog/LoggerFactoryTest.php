@@ -11,6 +11,8 @@
 
 	class LoggerFactoryTest extends \PHPUnit_Framework_TestCase
 	{
+		private $loggerConfigProvider;
+
 		private $loggerConfig;
 
 		private $loggerFactory;
@@ -19,7 +21,10 @@
 		{
 			$this->loggerConfig = $this->getMock('Conpago\Logging\Contract\ILoggerConfig');
 			$this->loggerConfig->expects($this->any())->method('getLogFilePath')->willReturn('');
-			$this->loggerFactory = new LoggerFactory($this->loggerConfig);
+			$this->loggerConfigProvider = $this->getMock('Conpago\Logging\Contract\ILoggerConfigProvider');
+			$this->loggerConfigProvider->expects($this->any())->method('getConfigs')->willReturn([$this->loggerConfig]);
+
+			$this->loggerFactory = new LoggerFactory($this->loggerConfigProvider);
 		}
 
 		function testCreateLogger()
