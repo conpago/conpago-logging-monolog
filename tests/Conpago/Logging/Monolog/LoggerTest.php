@@ -10,8 +10,9 @@
 
 
 	use PHPUnit_Framework_MockObject_MockObject;
+    use Psr\Log\LoggerInterface;
 
-	class LoggerTest extends \PHPUnit_Framework_TestCase
+    class LoggerTest extends \PHPUnit_Framework_TestCase
 	{
 		const logMessage = 'xxx';
 		private $logContext = array();
@@ -21,7 +22,7 @@
 
 		protected function setUp()
 		{
-			$this->loggerInterface = $this->getMock('Psr\Log\LoggerInterface');
+			$this->loggerInterface = $this->createLoggerInterfaceMock();
 			$this->logger = new Logger($this->loggerInterface);
 		}
 
@@ -72,5 +73,13 @@
 			$this->loggerInterface->expects($this->once())->method('warning')->with(self::logMessage, $this->logContext);
 			$this->logger->addWarning(self::logMessage, $this->logContext);
 		}
-	}
+
+        /**
+         * @return PHPUnit_Framework_MockObject_MockObject
+         */
+        protected function createLoggerInterfaceMock()
+        {
+            return $this->createMock(LoggerInterface::class);
+        }
+    }
  

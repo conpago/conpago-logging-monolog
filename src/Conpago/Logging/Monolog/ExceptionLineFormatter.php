@@ -8,13 +8,11 @@
 
 	namespace Conpago\Logging\Monolog;
 
-
-	use Exception;
 	use Monolog\Formatter\LineFormatter;
 
 	class ExceptionLineFormatter extends LineFormatter
 	{
-		protected function normalizeException(Exception $e)
+		protected function normalizeException($e)
 		{
 			return 'Message: ' . $e->getMessage() .
 			       'Stack Trace: '. $e->getTraceAsString();

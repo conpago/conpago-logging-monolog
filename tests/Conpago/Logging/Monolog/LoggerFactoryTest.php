@@ -9,7 +9,11 @@
 	namespace Conpago\Logging\Monolog;
 
 
-	class LoggerFactoryTest extends \PHPUnit_Framework_TestCase
+	use Conpago\Logging\Contract\ILogger;
+    use Conpago\Logging\Contract\ILoggerConfig;
+    use Conpago\Logging\Contract\ILoggerConfigProvider;
+
+    class LoggerFactoryTest extends \PHPUnit_Framework_TestCase
 	{
 		private $loggerConfigProvider;
 
@@ -19,9 +23,9 @@
 
 		protected function setUp()
 		{
-			$this->loggerConfig = $this->getMock('Conpago\Logging\Contract\ILoggerConfig');
+			$this->loggerConfig = $this->createMock(ILoggerConfig::class);
 			$this->loggerConfig->expects($this->any())->method('getLogFilePath')->willReturn('');
-			$this->loggerConfigProvider = $this->getMock('Conpago\Logging\Contract\ILoggerConfigProvider');
+			$this->loggerConfigProvider = $this->createMock(ILoggerConfigProvider::class);
 			$this->loggerConfigProvider->expects($this->any())->method('getConfigs')->willReturn([$this->loggerConfig]);
 
 			$this->loggerFactory = new LoggerFactory($this->loggerConfigProvider);
@@ -29,6 +33,6 @@
 
 		function testCreateLogger()
 		{
-			$this->assertInstanceOf('Conpago\Logging\Contract\ILogger', $this->loggerFactory->createLogger());
+			$this->assertInstanceOf(ILogger::class, $this->loggerFactory->createLogger());
 		}
 	}

@@ -3,6 +3,8 @@
 	"description": "Monolog logging adapter for Conpago framework",
 	"type": "library",
 	"license": "MIT",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"authors": [
 		{
 			"name": "Bartosz Gołek",
@@ -21,7 +23,8 @@
 		"phpmd/phpmd": "*",
 		"squizlabs/php_codesniffer": "*",
 		"sebastian/phpcpd": "*",
-		"phpunit/phpunit": "4.*"
+		"phpunit/phpunit": "5.*",
+		"humbug/humbug" : "*"
 	},
 	"autoload": {
 		"psr-0": {
