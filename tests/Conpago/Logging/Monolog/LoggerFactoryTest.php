@@ -1,38 +1,35 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: bartosz.golek
-	 * Date: 2014-06-20
-	 * Time: 08:31
-	 */
+namespace Conpago\Logging\Monolog;
 
-	namespace Conpago\Logging\Monolog;
+use Conpago\Logging\Contract\ILogger;
+use Conpago\Logging\Contract\ILoggerConfig;
+use Conpago\Logging\Contract\ILoggerConfigProvider;
+use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
+class LoggerFactoryTest extends TestCase
+{
+    /** @var MockObject | ILoggerConfigProvider */
+    private $loggerConfigProviderMock;
 
-	use Conpago\Logging\Contract\ILogger;
-    use Conpago\Logging\Contract\ILoggerConfig;
-    use Conpago\Logging\Contract\ILoggerConfigProvider;
+    /** @var MockObject | ILoggerConfig */
+    private $loggerConfigMock;
 
-    class LoggerFactoryTest extends \PHPUnit_Framework_TestCase
-	{
-		private $loggerConfigProvider;
+    /** @var LoggerFactory */
+    private $loggerFactory;
 
-		private $loggerConfig;
+    protected function setUp()
+    {
+        $this->loggerConfigMock = $this->createMock(ILoggerConfig::class);
+        $this->loggerConfigMock->    method('getLogFilePath')->willReturn('');
+        $this->loggerConfigProviderMock = $this->createMock(ILoggerConfigProvider::class);
+        $this->loggerConfigProviderMock->    method('getConfigs')->willReturn([$this->loggerConfigMock]);
 
-		private $loggerFactory;
+        $this->loggerFactory = new LoggerFactory($this->loggerConfigProviderMock);
+    }
 
-		protected function setUp()
-		{
-			$this->loggerConfig = $this->createMock(ILoggerConfig::class);
-			$this->loggerConfig->expects($this->any())->method('getLogFilePath')->willReturn('');
-			$this->loggerConfigProvider = $this->createMock(ILoggerConfigProvider::class);
-			$this->loggerConfigProvider->expects($this->any())->method('getConfigs')->willReturn([$this->loggerConfig]);
-
-			$this->loggerFactory = new LoggerFactory($this->loggerConfigProvider);
-		}
-
-		function testCreateLogger()
-		{
-			$this->assertInstanceOf(ILogger::class, $this->loggerFactory->createLogger());
-		}
-	}
+    public function testCreateLogger()
+    {
+        $this->assertInstanceOf(ILogger::class, $this->loggerFactory->createLogger());
+    }
+}

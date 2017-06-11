@@ -1,20 +1,19 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: bg
-	 * Date: 29.09.15
-	 * Time: 18:45
-	 */
+namespace Conpago\Logging\Monolog;
 
-	namespace Conpago\Logging\Monolog;
+use Exception;
+use Monolog\Formatter\LineFormatter;
 
-	use Monolog\Formatter\LineFormatter;
-
-	class ExceptionLineFormatter extends LineFormatter
-	{
-		protected function normalizeException($e)
-		{
-			return 'Message: ' . $e->getMessage() .
-			       'Stack Trace: '. $e->getTraceAsString();
-		}
-	}
+class ExceptionLineFormatter extends LineFormatter
+{
+    /**
+     * @param Exception $exception
+     *
+     * @return string
+     */
+    protected function normalizeException($exception)
+    {
+        return 'Message: ' . $exception->getMessage() .
+               'Stack Trace: '. $exception->getTraceAsString();
+    }
+}
