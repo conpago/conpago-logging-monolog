@@ -24,10 +24,10 @@ class LoggerFactory
         $log = new MonologLogger('application');
         foreach ($this->loggerConfigProvider->getConfigs() as $loggerConfig) {
             $handler = new StreamHandler(
-                    $loggerConfig->getLogFilePath(),
-                    $loggerConfig->getLogLevel()
+                $loggerConfig->getLogFilePath(),
+                $loggerConfig->getLogLevel()
             );
-            $handler->setFormatter( new ExceptionLineFormatter() );
+            $handler->setFormatter(new ExceptionLineFormatter());
             $log->pushHandler( $handler );
         }
         return new Logger($log);
